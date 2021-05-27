@@ -1,0 +1,7 @@
+{
+    
+    "responseTimeout": 100000,
+    "requestTimeout": 100000,
+    "waitForAnimations": true,
+    "video": true
+}
