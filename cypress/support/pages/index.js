@@ -5,6 +5,10 @@
 class Logon {
     acessarLogin(){
         cy.visit('https://www.livelo.com.br/')
+        cy.wait(10000)
+
+        cy.get('#btn-authorizeCoookies').should('be.visible').click();
+        cy.get('#img-brand').should('be.visible'); 
     }
 
     navegarMenusFechaMenus(){
@@ -43,8 +47,10 @@ class Logon {
         cy.get('#span-productId').should('be.visible');
 
         cy.get('#EXT11336009 > #CC-prodDetails-addToCart > .button').click({ forces: true });
-
+        cy.wait(4000)
+        cy.get('.two').should('not.be.visible');
         cy.get('#ctaCheckout').should('be.visible').click();
+        cy.visit('https://www.livelo.com.br/')
     }
 
     batePapoChat(){
@@ -63,11 +69,11 @@ class Logon {
     avaliacaoAtendimento(){
         cy.get('[src="https://www.pontoslivelo.com.br/livelo_chat/js/assets/webpack/97e1bb51a49a588b17f6a245fb3a90d8.svg"]').click()
         cy.get('[for="10"]').click();
-
-        cy.get(':nth-child(2) > .lv-container-nps-reason-content-checklist-label-text').click()
+        
         cy.get('#lv-tab-textarea-nps').type('Qa Testes automatizados');
-        cy.get('#btn_send').click();
-        cy.get('#btn_end').click();
+
+        cy.get('#btn_enviar').click();
+        cy.get('#btn_encerrar').click();
     }
 }
 
